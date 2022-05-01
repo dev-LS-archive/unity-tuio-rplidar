@@ -417,7 +417,7 @@ namespace TouchScript.InputSources
             var entity = e.Blob;
             lock (this)
             {
-                var x = entity.X * screenWidth;
+                var x = (1-entity.X) * screenWidth;
                 //var y = (1 - entity.Y) * screenHeight;
                 var y = entity.Y * screenHeight;
                 var touch = internalAddObject(new Vector2(x, y));
@@ -434,7 +434,7 @@ namespace TouchScript.InputSources
                 ObjectPointer touch;
                 if (!blobToInternalId.TryGetValue(entity, out touch)) return;
 
-                var x = entity.X * screenWidth;
+                var x = (1-entity.X) * screenWidth;
                 var y = (entity.Y) * screenHeight;
 
                 touch.Position = remapCoordinates(new Vector2(x, y));
