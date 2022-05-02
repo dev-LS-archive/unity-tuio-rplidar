@@ -13,11 +13,15 @@ public class FileLoad : MonoBehaviour
     private const int SW_SHOWNORMAL = 1;
     private const int SW_SHOWMINIMIZED = 2;
     private const int SW_SHOWMAXIMIZED = 3;
+    
     [DllImport("user32.dll")]
     static extern bool SetForegroundWindow(IntPtr hWnd);
     [DllImport("user32.dll")]
     static extern bool AllowSetForegroundWindow(int dwProcessId);
- 
+
+    [DllImport("user32.dll")]
+    private static extern IntPtr GetActiveWindow();
+
     void ActivateApp(string processName)
     {
         Process[] p = Process.GetProcessesByName(processName);
@@ -42,10 +46,31 @@ public class FileLoad : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         ActProgram();
         MinWindow();
+        SetForegroundWindow(GetActiveWindow());
         SceneManager.LoadScene(1);
     }
 
-    public void MinWindow()
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex == 1)
+            Invoke(nameof(Foreground), 1f);
+    }
+
+    void Foreground()
+    {
+        SetForegroundWindow(GetActiveWindow());
+    }
+    private void MinWindow()
     {
         foreach (Process process in Process.GetProcesses())
         {
@@ -55,11 +80,13 @@ public class FileLoad : MonoBehaviour
             }
         }
     }
-    public void ActProgram()
+
+    private void ActProgram()
     {
         Process.Start(@"C:\Users\admin\Desktop\MultiTouch_Server.exe - 바로 가기.lnk");
     }
-    public void UnActProgram()
+
+    private void UnActProgram()
     {
         foreach (Process process in Process.GetProcesses())
         {

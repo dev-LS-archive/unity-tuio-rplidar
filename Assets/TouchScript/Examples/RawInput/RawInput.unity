@@ -4803,7 +4803,6 @@ GameObject:
   - component: {fileID: 1461863712}
   - component: {fileID: 1461863711}
   - component: {fileID: 1461863716}
-  - component: {fileID: 1461863717}
   m_Layer: 5
   m_Name: Canvas_EndTime
   m_TagString: Untagged
@@ -4929,19 +4928,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c337a368d5976840a5c1e5f37875652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1461863717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461863710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a22f301c91c01dd4f915174f35e83861, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  port: COM3
 --- !u!1 &1488258037
 GameObject:
   m_ObjectHideFlags: 0

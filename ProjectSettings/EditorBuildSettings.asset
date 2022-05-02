@@ -32,10 +32,25 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/TouchScript/Examples/Portal/Portal.unity
     guid: 20ddca9320eeb4eb28b7ce5fcb289923
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Pre_Load.unity
     guid: 3d23fe6b9088bba4da94d95db0464e0d
   - enabled: 1
-    path: Assets/TouchScript/Examples/RawInput/RawInput.unity
-    guid: 9ee061879a6b743808a9f9056a52d885
+    path: Assets/Scenes/CustomRpliadr.unity
+    guid: 66b2b28506c2f23468e5ee9844701ec8
+  - enabled: 1
+    path: Assets/AssetStore/Ember FX/Scenes/Ember01.unity
+    guid: a1c1d2b533d0e5f44987221512fead23
+  - enabled: 1
+    path: Assets/AssetStore/Ember FX/Scenes/Ember02.unity
+    guid: 12292e405d8f6d246ab75f5ba3dfbd6f
+  - enabled: 1
+    path: Assets/AssetStore/Ember FX/Scenes/Ember03.unity
+    guid: ab9fbd44740540542b72a765531e92a6
+  - enabled: 1
+    path: Assets/AssetStore/Ember FX/Scenes/Ember04.unity
+    guid: 121b72be3483f8f4db78d3926914f049
+  - enabled: 1
+    path: Assets/AssetStore/Ember FX/Scenes/Ember05.unity
+    guid: a9cbb2de94ea6924094d31db62932de2
   m_configObjects: {}

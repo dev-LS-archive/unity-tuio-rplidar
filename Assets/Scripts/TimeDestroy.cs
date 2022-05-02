@@ -8,9 +8,9 @@ public class TimeDestroy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("waitDestroy");
+        StartCoroutine(nameof(WaitDestroy));
     }
-    IEnumerator waitDestroy()
+    IEnumerator WaitDestroy()
     {
         yield return new WaitForSeconds(lifeTime);
         Destroy(gameObject);
