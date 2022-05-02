@@ -1,18 +1,24 @@
 using System;
 using TMPro;
+using TouchScript.Examples.RawInput;
 using UnityEngine;
 using UnityEngine.UI;
-using TouchScript.InputSources;
 public class EndTimeReservation : MonoBehaviour
 {
     public GameObject controlWindow;
-    public InputField quitHour;
-    public InputField quitMinute;
-    public InputField quitSecond;
-    public InputField quitAmpm;
+    public Dropdown quitHour;
+    public Dropdown quitMinute;
+    public Dropdown quitSecond;
+    public Dropdown quitAmpm;
+    
+    public Spawner spawner;
 
-    public TuioInput tiInput;
+    public TMP_Text h, m, s, t;
     public bool isWindowOpen = false;
+
+    private int hour, minute, second, ampm;
+
+    public string dateTime = null;
     // Start is called before the first frame update
     private void Start()
     {
@@ -27,21 +33,28 @@ public class EndTimeReservation : MonoBehaviour
             
             if (controlWindow.activeSelf)
             {
-                tiInput.enabled = false;
+                spawner.enabled = true;
                 Save_And_Close();
             }
             else
             {
-                tiInput.enabled = true;
+                spawner.enabled = false;
                 controlWindow.SetActive(true);
                 isWindowOpen = true;
             }
             
         }
+
+        h.text = DateTime.Now.ToString("hh");
+        m.text = DateTime.Now.ToString("mm");
+        s.text = DateTime.Now.ToString("ss");
+        t.text = DateTime.Now.ToString("tt");
         
-        Debug.Log(DateTime.Now.ToString("h:m:s tt"));
-        Debug.Log(quitHour.text+":"+quitMinute.text+":"+quitSecond.text+" "+quitAmpm.text);
-        if (DateTime.Now.ToString("h:m:s tt") == quitHour.text+":"+quitMinute.text+":"+quitSecond.text+" "+quitAmpm.text)
+        dateTime = quitHour.options[hour].text + ":" + quitMinute.options[minute].text + ":" +
+                   quitSecond.options[second].text + " " + quitAmpm.options[ampm].text;
+        //Debug.Log(DateTime.Now.ToString("h:m:s tt"));
+        //Debug.Log(dateTime);
+        if (DateTime.Now.ToString("h:m:s tt") == dateTime)
         {
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
@@ -52,10 +65,10 @@ public class EndTimeReservation : MonoBehaviour
     }
     public void Save_And_Close()
     {
-        PlayerPrefs.SetString("Hour", quitHour.text);
-        PlayerPrefs.SetString("Minute", quitMinute.text);
-        PlayerPrefs.SetString("Second", quitSecond.text);
-        PlayerPrefs.SetString("AM/PM", quitAmpm.text);
+        PlayerPrefs.SetInt("Hour", quitHour.value);
+        PlayerPrefs.SetInt("Minute", quitMinute.value);
+        PlayerPrefs.SetInt("Second", quitSecond.value);
+        PlayerPrefs.SetInt("AM/PM", quitAmpm.value);
 
         SetTime();
 
@@ -65,20 +78,16 @@ public class EndTimeReservation : MonoBehaviour
 
     void SetTime()
     {
-        string hour = PlayerPrefs.GetString("Hour", 5.ToString());
-        quitHour.text = hour;
+        hour = PlayerPrefs.GetInt("Hour", 5);
+        quitHour.value = hour;
 
-        string minute = PlayerPrefs.GetString("Minute", 35.ToString());
-        quitMinute.text = minute;
+        minute = PlayerPrefs.GetInt("Minute", 35);
+        quitMinute.value = minute;
 
-        string second = PlayerPrefs.GetString("Second", 0.ToString());
-        quitSecond.text = second;
-        
-        string ampm = PlayerPrefs.GetString("AM/PM", "P");
-        if(ampm=="A")
-            quitAmpm.text = "오전";
-        if(ampm=="P")
-            quitAmpm.text = "오후";
-        
+        second = PlayerPrefs.GetInt("Second", 0);
+        quitSecond.value = second;
+
+        ampm = PlayerPrefs.GetInt("AM/PM", 1);
+        quitAmpm.value = ampm;
     }
 }
