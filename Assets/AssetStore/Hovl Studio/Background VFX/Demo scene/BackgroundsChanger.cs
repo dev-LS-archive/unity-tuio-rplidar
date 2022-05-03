@@ -11,7 +11,8 @@ public class BackgroundsChanger : MonoBehaviour
     public GameObject[] SceneObjects;
     private int Prefab;
     private int ActiveObject;
-    private bool GUIswitcher = true;
+    public bool GUIswitcher = false;
+    public float yPos = 5f;
 
     void Start()
     {
@@ -23,7 +24,7 @@ public class BackgroundsChanger : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("h"))
+        if (Input.GetKeyDown(KeyCode.F1))
             GUIswitcher = !GUIswitcher;
     }
 
@@ -31,15 +32,15 @@ public class BackgroundsChanger : MonoBehaviour
     {
         if (GUIswitcher)
         {
-            if (GUI.Button(new Rect(5 * windowDpi, 5 * windowDpi, 110 * windowDpi, 35 * windowDpi), "Previous effect"))
+            if (GUI.Button(new Rect(5 * windowDpi, yPos * windowDpi, 110 * windowDpi, 35 * windowDpi), "Previous effect"))
             {
                 Counter(-1);
             }
-            if (GUI.Button(new Rect(120 * windowDpi, 5 * windowDpi, 110 * windowDpi, 35 * windowDpi), "Play again"))
+            if (GUI.Button(new Rect(120 * windowDpi, yPos * windowDpi, 110 * windowDpi, 35 * windowDpi), "Play again"))
             {
                 Counter(0);
             }
-            if (GUI.Button(new Rect(235 * windowDpi, 5 * windowDpi, 110 * windowDpi, 35 * windowDpi), "Next effect"))
+            if (GUI.Button(new Rect(235 * windowDpi, yPos * windowDpi, 110 * windowDpi, 35 * windowDpi), "Next effect"))
             {
                 Counter(+1);
             }

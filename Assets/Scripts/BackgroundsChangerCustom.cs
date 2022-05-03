@@ -11,7 +11,7 @@ public class BackgroundsChangerCustom : MonoBehaviour
         Counter(0);
     }
 
-    void Counter(int count)
+    public void Counter(int count)
     {
         _prefab += count;
         if (_prefab > sceneObjects.Length - 1)

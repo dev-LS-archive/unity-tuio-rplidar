@@ -18,7 +18,7 @@ namespace TouchScript.Layers.UI
     /// <summary>
     /// An implementation of a Unity UI Input Module which lets TouchScript interact with the UI and EventSystem.
     /// </summary>
-    internal sealed class TouchScriptInputModule : BaseInputModule
+    public sealed class TouchScriptInputModule : BaseInputModule
     {
         #region Public properties
 

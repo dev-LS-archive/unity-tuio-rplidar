@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using TouchScript.Examples.RawInput;
 using TouchScript.InputSources;
+using TouchScript.Layers.UI;
 using UnityEngine;
 using UnityEngine.UI;
 public class EndTimeReservation : MonoBehaviour
@@ -11,8 +12,9 @@ public class EndTimeReservation : MonoBehaviour
     public Dropdown quitMinute;
     public Dropdown quitSecond;
     public Dropdown quitAmpm;
-
-    public GameObject touchObjs;
+    
+    public RandomSpawner[] spawners;
+    public TouchScriptInputModule touchModule;
 
     public TMP_Text h, m, s, t;
     public bool isWindowOpen = false;
@@ -34,12 +36,20 @@ public class EndTimeReservation : MonoBehaviour
             
             if (controlWindow.activeSelf)
             {
-                touchObjs.SetActive(true);
+                foreach (var variable in spawners)
+                {
+                    variable.enabled = true;
+                }
+                touchModule.enabled = true;
                 Save_And_Close();
             }
             else
             {
-                touchObjs.SetActive(false);
+                foreach (var variable in spawners)
+                {
+                    variable.enabled = false;
+                }
+                touchModule.enabled = false;
                 controlWindow.SetActive(true);
                 isWindowOpen = true;
             }
