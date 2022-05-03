@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shockwave
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 303cb2a72fd1f284cb0a8fc62f194818,
+      type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: prefabs.Array.size
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: prefabs.Array.data[0]
+    value: 
+    objectReference: {fileID: 403426411995805799, guid: cc4f163cb265d1545919139ff5ce84d6,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: prefabs.Array.data[1]
+    value: 
+    objectReference: {fileID: 403426411995805799, guid: db0764a50d0a5994eb17b70e4b0fc86a,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: prefabs.Array.data[2]
+    value: 
+    objectReference: {fileID: 403426411995805799, guid: 6f1554ba5cbbc144dac0532344bb699f,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: prefabs.Array.data[3]
+    value: 
+    objectReference: {fileID: 403426411995805799, guid: d36fb4e6ee573f24a8f6032ef7949f34,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: prefabs.Array.data[4]
+    value: 
+    objectReference: {fileID: 403426411995805799, guid: 70f145697f2e0ed469a1bdf84ad6f8ea,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: prefabs.Array.data[5]
+    value: 
+    objectReference: {fileID: 403426411995805799, guid: 33bf6a2575758b543b845bead34780b1,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: prefabs.Array.data[6]
+    value: 
+    objectReference: {fileID: 403426411995805799, guid: 213a564ae7014eb4d91928e1fee73138,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: spawnDistance
+    value: 30
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: delay
+    value: 0.7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: canSpawn
+    value: 1
+    objectReference: {fileID: 0}
+  m_ExcludedProperties: []

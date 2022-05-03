@@ -152,6 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a8127d02b7ed148aa709281636e162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actFile: "MultiTouch_Server.exe - \uBC14\uB85C \uAC00\uAE30.lnk"
+  fileName: MultiTouch_Server
+  path: "\"C:\\Users\\admin\\Desktop\\MultiTouch_Server.exe - \uBC14\uB85C \uAC00\uAE30.lnk"
 --- !u!4 &997005697
 Transform:
   m_ObjectHideFlags: 0

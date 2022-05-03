@@ -48,7 +48,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -56,7 +56,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 2.36
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -14656,6 +14656,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3384752728036187065}
+  - component: {fileID: 5292551045627661567}
   m_Layer: 0
   m_Name: lightning bolt
   m_TagString: Untagged
@@ -14682,6 +14683,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5292551045627661567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3384752728036187070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b9631f896a183540ae8cc0c67b74f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 3
 --- !u!1 &3384752728730494909
 GameObject:
   m_ObjectHideFlags: 0

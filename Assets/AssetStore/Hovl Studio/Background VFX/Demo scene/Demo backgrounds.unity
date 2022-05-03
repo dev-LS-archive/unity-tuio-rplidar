@@ -737,7 +737,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: file://C:/Users/admin/Desktop/Video/rainbow-nebula-4YAFUBD.mp4
+  m_Url: file://C:/Users/admin/Desktop/Video/SukJangliMainVideo_03.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
@@ -1378,6 +1378,8 @@ MonoBehaviour:
   - {fileID: 7249715877394530969}
   - {fileID: 8536453049469789229}
   - {fileID: 5962650978963418267}
+  GUIswitcher: 1
+  yPos: 5
 --- !u!4 &1239307899
 Transform:
   m_ObjectHideFlags: 0

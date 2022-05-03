@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using TouchScript.Gestures;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Debug = System.Diagnostics.Debug;
@@ -22,7 +23,10 @@ public class FileLoad : MonoBehaviour
     [DllImport("user32.dll")]
     private static extern IntPtr GetActiveWindow();
 
-    void ActivateApp(string processName)
+    public string actFile;
+    public string fileName;
+    public string path;
+    void ActivateApp(string processName, int cmdShow)
     {
         Process[] p = Process.GetProcessesByName(processName);
  
@@ -31,23 +35,26 @@ public class FileLoad : MonoBehaviour
  
             try
             {
-                ShowWindowAsync(p[0].MainWindowHandle, SW_SHOWMINIMIZED);
+                ShowWindowAsync(p[0].MainWindowHandle, cmdShow);
                 AllowSetForegroundWindow(p[0].Id);
                 SetForegroundWindow(p[0].MainWindowHandle);
             }
             catch(Exception ex)
             {
-                Debug.WriteLine(ex.Message);
+                //Debug.WriteLine(ex.Message);
+                ReleaseGesture.print(ex.Message);
             }
     }   
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(gameObject);
+        UnActProgram();
         ActProgram();
-        MinWindow();
-        SetForegroundWindow(GetActiveWindow());
+        //SetForegroundWindow(GetActiveWindow());
         SceneManager.LoadScene(1);
+        ActWindow(actFile,SW_SHOWMINIMIZED);
+        ActWindow(Application.productName, SW_SHOWMAXIMIZED);
     }
 
     private void OnEnable()
@@ -70,27 +77,31 @@ public class FileLoad : MonoBehaviour
     {
         SetForegroundWindow(GetActiveWindow());
     }
-    private void MinWindow()
+
+    private void ActWindow(string processName, int cmdShow)
     {
         foreach (Process process in Process.GetProcesses())
         {
-            if (process.ProcessName.StartsWith("MultiTouch_Server"))
+            if (process.ProcessName.StartsWith(processName))//actFile
             {
-                ActivateApp(process.ProcessName);
+                ActivateApp(process.ProcessName,cmdShow);
+                SetForegroundWindow(process.Handle);
             }
         }
     }
 
     private void ActProgram()
     {
-        Process.Start(@"C:\Users\admin\Desktop\MultiTouch_Server.exe - 바로 가기.lnk");
+        //바탕화면
+        path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        Process.Start(path + "/" + actFile);
     }
 
     private void UnActProgram()
     {
         foreach (Process process in Process.GetProcesses())
         {
-            if (process.ProcessName.StartsWith("MultiTouch_Server"))
+            if (process.ProcessName.StartsWith(fileName))
             {
                 process.Kill();
             }

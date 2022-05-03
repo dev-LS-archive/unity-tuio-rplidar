@@ -19,7 +19,7 @@ public class EndTimeReservation : MonoBehaviour
     public TMP_Text h, m, s, t;
     public bool isWindowOpen = false;
 
-    private int hour, minute, second, ampm;
+    private int _hour, _minute, _second, _ampm;
 
     public string dateTime = null;
     // Start is called before the first frame update
@@ -61,8 +61,8 @@ public class EndTimeReservation : MonoBehaviour
         s.text = DateTime.Now.ToString("ss");
         t.text = DateTime.Now.ToString("tt");
         
-        dateTime = quitHour.options[hour].text + ":" + quitMinute.options[minute].text + ":" +
-                   quitSecond.options[second].text + " " + quitAmpm.options[ampm].text;
+        dateTime = quitHour.options[_hour].text + ":" + quitMinute.options[_minute].text + ":" +
+                   quitSecond.options[_second].text + " " + quitAmpm.options[_ampm].text;
         //Debug.Log(DateTime.Now.ToString("h:m:s tt"));
         //Debug.Log(dateTime);
         if (DateTime.Now.ToString("h:m:s tt") == dateTime)
@@ -94,16 +94,16 @@ public class EndTimeReservation : MonoBehaviour
 
     void SetTime()
     {
-        hour = PlayerPrefs.GetInt("Hour", 5);
-        quitHour.value = hour;
+        _hour = PlayerPrefs.GetInt("Hour", 5);
+        quitHour.value = _hour;
 
-        minute = PlayerPrefs.GetInt("Minute", 35);
-        quitMinute.value = minute;
+        _minute = PlayerPrefs.GetInt("Minute", 35);
+        quitMinute.value = _minute;
 
-        second = PlayerPrefs.GetInt("Second", 0);
-        quitSecond.value = second;
+        _second = PlayerPrefs.GetInt("Second", 0);
+        quitSecond.value = _second;
 
-        ampm = PlayerPrefs.GetInt("AM/PM", 1);
-        quitAmpm.value = ampm;
+        _ampm = PlayerPrefs.GetInt("AM/PM", 1);
+        quitAmpm.value = _ampm;
     }
 }

@@ -11,10 +11,14 @@ namespace TouchScript.Examples.RawInput
     public class RandomSpawner : MonoBehaviour
     {
         public GameObject[] prefabs;
+        public GameObject[] backEffects;
+        public BackgroundsChangerCustom backChanger;
         public float spawnDistance = 10f;
         public float delay = 0.5f;
         public bool canSpawn = true;
 
+        public int spawnNum = 0;
+        
         private void OnEnable()
         {
             if (TouchManager.Instance != null)
@@ -33,7 +37,12 @@ namespace TouchScript.Examples.RawInput
 
         private void SpawnPrefabAt(Vector2 position)
         {
-            var obj = Instantiate(prefabs[Random.Range(0, prefabs.Length)]);
+            var obj = Instantiate(prefabs[spawnNum]);//Random.Range(0, prefabs.Length)
+            if (spawnNum < prefabs.Length - 1 && prefabs.Length != 1)
+                spawnNum+=1;
+            else
+                spawnNum = 0;
+            
             if (Camera.main != null)
                 obj.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(position.x, position.y, spawnDistance));
             obj.transform.rotation = transform.rotation;
@@ -43,7 +52,6 @@ namespace TouchScript.Examples.RawInput
         {
             if (canSpawn == true)
             {
-                Vector2 center = default;
                 float[] x = new float[e.Pointers.Count];
                 float[] y = new float[e.Pointers.Count];
                 int i = 0; float xSum=0, ySum=0;
@@ -54,14 +62,23 @@ namespace TouchScript.Examples.RawInput
                     xSum += x[i];
                     ySum += y[i];
                 }
-
-                center = new Vector2(xSum / e.Pointers.Count, ySum / e.Pointers.Count);
+                
+                var center = new Vector2(xSum / e.Pointers.Count, ySum / e.Pointers.Count);
                 StartCoroutine(Delay(center));
             }
         }
 
         IEnumerator Delay(Vector2 center)
         {
+            for (int i = 0; i < backChanger.sceneObjects.Length; i++)
+            {
+                if (backChanger.sceneObjects[i].activeSelf == true)
+                {
+                    backChanger.activeObject = i;
+                    Instantiate(backEffects[backChanger.activeObject]);
+                }
+            }
+            
             canSpawn = false;
             SpawnPrefabAt(center);
             yield return new WaitForSeconds(delay);

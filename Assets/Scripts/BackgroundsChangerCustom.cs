@@ -1,10 +1,11 @@
 using UnityEngine;
 
 public class BackgroundsChangerCustom : MonoBehaviour
+
 {
     public GameObject[] sceneObjects;
     private int _prefab;
-    private int _activeObject;
+    public int activeObject;
     
     void Start()
     {
@@ -22,11 +23,21 @@ public class BackgroundsChangerCustom : MonoBehaviour
         {
             _prefab = sceneObjects.Length - 1;
         }
-        if (sceneObjects[_activeObject].activeInHierarchy)
+        if (sceneObjects[activeObject].activeInHierarchy)
         {
-            sceneObjects[_activeObject].SetActive(false);
+            sceneObjects[activeObject].SetActive(false);
         }
-        _activeObject = _prefab;
+        activeObject = _prefab;
         sceneObjects[_prefab].SetActive(true);
+    }
+    
+    public void Active_Nth(int num)
+    {
+        if (sceneObjects[activeObject].activeInHierarchy)
+        {
+            sceneObjects[activeObject].SetActive(false);
+        }
+        activeObject = num;
+        sceneObjects[num].SetActive(true);
     }
 }
