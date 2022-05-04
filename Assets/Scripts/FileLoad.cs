@@ -11,6 +11,8 @@ public class FileLoad : MonoBehaviour
 {
     [DllImport("user32.dll")]
     private static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
+
+    private const int SW_HIDE = 0;
     private const int SW_SHOWNORMAL = 1;
     private const int SW_SHOWMINIMIZED = 2;
     private const int SW_SHOWMAXIMIZED = 3;
@@ -42,7 +44,7 @@ public class FileLoad : MonoBehaviour
             catch(Exception ex)
             {
                 //Debug.WriteLine(ex.Message);
-                ReleaseGesture.print(ex.Message);
+                //ReleaseGesture.print(ex.Message);
             }
     }   
     // Start is called before the first frame update
@@ -52,8 +54,8 @@ public class FileLoad : MonoBehaviour
         UnActProgram();
         ActProgram();
         //SetForegroundWindow(GetActiveWindow());
+        ActWindow(actFile,SW_HIDE);
         SceneManager.LoadScene(1);
-        ActWindow(actFile,SW_SHOWMINIMIZED);
         ActWindow(Application.productName, SW_SHOWMAXIMIZED);
     }
 
@@ -70,7 +72,7 @@ public class FileLoad : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.buildIndex == 1)
-            Invoke(nameof(Foreground), 1f);
+            Foreground();//Invoke(nameof(Foreground), 1f);
     }
 
     void Foreground()
@@ -85,7 +87,6 @@ public class FileLoad : MonoBehaviour
             if (process.ProcessName.StartsWith(processName))//actFile
             {
                 ActivateApp(process.ProcessName,cmdShow);
-                SetForegroundWindow(process.Handle);
             }
         }
     }
@@ -95,6 +96,13 @@ public class FileLoad : MonoBehaviour
         //바탕화면
         path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         Process.Start(path + "/" + actFile);
+        foreach (Process process in Process.GetProcesses())
+        {
+            if (process.ProcessName.StartsWith(actFile))//actFile
+            {
+                ActivateApp(process.ProcessName,6);
+            }
+        }
     }
 
     private void UnActProgram()

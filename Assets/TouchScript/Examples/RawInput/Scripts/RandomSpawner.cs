@@ -2,8 +2,10 @@
  * @author Valentin Simonov / http://va.lent.in/
  */
 
+//sing System;
 using System.Collections;
 using UnityEngine;
+//using Random = UnityEngine.Random;
 
 namespace TouchScript.Examples.RawInput
 {
@@ -13,12 +15,20 @@ namespace TouchScript.Examples.RawInput
         public GameObject[] prefabs;
         public GameObject[] backEffects;
         public BackgroundsChangerCustom backChanger;
+        public MultipleObjectPooling pooling;
         public float spawnDistance = 10f;
         public float delay = 0.5f;
         public bool canSpawn = true;
 
         public int spawnNum = 0;
-        
+
+        private void Start()
+        {
+            spawnNum = 0;
+            pooling.CreateMultiplePoolObjects();
+            prefabs = pooling.poolPrefabs;
+        }
+
         private void OnEnable()
         {
             if (TouchManager.Instance != null)
@@ -37,7 +47,7 @@ namespace TouchScript.Examples.RawInput
 
         private void SpawnPrefabAt(Vector2 position)
         {
-            var obj = Instantiate(prefabs[spawnNum]);//Random.Range(0, prefabs.Length)
+            var obj = pooling.GetPooledObject(prefabs[spawnNum].name);//Instantiate(prefabs[spawnNum]);//Random.Range(0, prefabs.Length)
             if (spawnNum < prefabs.Length - 1 && prefabs.Length != 1)
                 spawnNum+=1;
             else
@@ -46,6 +56,7 @@ namespace TouchScript.Examples.RawInput
             if (Camera.main != null)
                 obj.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(position.x, position.y, spawnDistance));
             obj.transform.rotation = transform.rotation;
+            obj.SetActive(true);
         }
 
         private void PointersPressedHandler(object sender, PointerEventArgs e)
@@ -70,14 +81,14 @@ namespace TouchScript.Examples.RawInput
 
         IEnumerator Delay(Vector2 center)
         {
-            for (int i = 0; i < backChanger.sceneObjects.Length; i++)
-            {
-                if (backChanger.sceneObjects[i].activeSelf == true)
-                {
-                    backChanger.activeObject = i;
-                    Instantiate(backEffects[backChanger.activeObject]);
-                }
-            }
+            // for (int i = 0; i < backChanger.sceneObjects.Length; i++)
+            // {
+            //     if (backChanger.sceneObjects[i].activeSelf == true)
+            //     {
+            //         backChanger.activeObject = i;
+            //         Instantiate(backEffects[backChanger.activeObject]);
+            //     }
+            // }
             
             canSpawn = false;
             SpawnPrefabAt(center);

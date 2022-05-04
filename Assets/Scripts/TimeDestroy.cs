@@ -6,13 +6,14 @@ public class TimeDestroy : MonoBehaviour
 {
     [SerializeField] private float lifeTime = 1f;
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         StartCoroutine(nameof(WaitDestroy));
     }
     IEnumerator WaitDestroy()
     {
         yield return new WaitForSeconds(lifeTime);
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
