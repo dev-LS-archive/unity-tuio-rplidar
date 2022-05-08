@@ -133,6 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 997005697}
   - component: {fileID: 997005696}
+  - component: {fileID: 997005698}
+  - component: {fileID: 997005699}
   m_Layer: 0
   m_Name: Loader
   m_TagString: Untagged
@@ -152,8 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a8127d02b7ed148aa709281636e162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actFile: "MultiTouch_Server.exe - \uBC14\uB85C \uAC00\uAE30.lnk"
-  fileName: MultiTouch_Server
+  actFile: "calibration_app.exe - \uBC14\uB85C \uAC00\uAE30.lnk"
+  fileName: calibration_app
   path: "\"C:\\Users\\admin\\Desktop\\MultiTouch_Server.exe - \uBC14\uB85C \uAC00\uAE30.lnk"
 --- !u!4 &997005697
 Transform:
@@ -170,3 +172,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &997005698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997005695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1040d0a5955dd9f4e84e422d9d06485c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &997005699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997005695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c61f557e3ca3eca4ab76308a70f9f690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

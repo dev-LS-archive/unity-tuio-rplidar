@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using TouchScript.Gestures;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Debug = System.Diagnostics.Debug;
@@ -12,8 +11,8 @@ public class FileLoad : MonoBehaviour
     [DllImport("user32.dll")]
     private static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
 
-    private const int SW_HIDE = 0;
-    private const int SW_SHOWNORMAL = 1;
+    //private const int SW_HIDE = 0;
+    //private const int SW_SHOWNORMAL = 1;
     private const int SW_SHOWMINIMIZED = 2;
     private const int SW_SHOWMAXIMIZED = 3;
     
@@ -33,8 +32,8 @@ public class FileLoad : MonoBehaviour
         Process[] p = Process.GetProcessesByName(processName);
  
         // Activate the first application we find with this name
-        if (p.Count() > 0)
- 
+        if (p.Any())
+        {
             try
             {
                 ShowWindowAsync(p[0].MainWindowHandle, cmdShow);
@@ -43,9 +42,10 @@ public class FileLoad : MonoBehaviour
             }
             catch(Exception ex)
             {
-                //Debug.WriteLine(ex.Message);
+                Debug.WriteLine(ex.Message);
                 //ReleaseGesture.print(ex.Message);
             }
+        }
     }   
     // Start is called before the first frame update
     void Start()
@@ -53,10 +53,9 @@ public class FileLoad : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         UnActProgram();
         ActProgram();
+        ActWindow(fileName,SW_SHOWMINIMIZED);
         //SetForegroundWindow(GetActiveWindow());
-        ActWindow(actFile,SW_HIDE);
         SceneManager.LoadScene(1);
-        ActWindow(Application.productName, SW_SHOWMAXIMIZED);
     }
 
     private void OnEnable()
@@ -72,7 +71,10 @@ public class FileLoad : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.buildIndex == 1)
+        {
+            ActWindow(Application.productName, SW_SHOWMAXIMIZED);
             Foreground();//Invoke(nameof(Foreground), 1f);
+        }
     }
 
     void Foreground()
@@ -82,6 +84,7 @@ public class FileLoad : MonoBehaviour
 
     private void ActWindow(string processName, int cmdShow)
     {
+        //print(processName);
         foreach (Process process in Process.GetProcesses())
         {
             if (process.ProcessName.StartsWith(processName))//actFile
