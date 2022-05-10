@@ -13,12 +13,12 @@ public class TimeManager : MonoBehaviour
 
     private void Start()
     {
-        playLength.text = Math.Round(pd.playableAsset.duration, 3).ToString(CultureInfo.InvariantCulture);
+        playLength.text = Math.Round(pd.playableAsset.duration, 1).ToString(CultureInfo.InvariantCulture);
     }
 
     private void Update()
     {
-        playTime.text=Math.Round(pd.time, 3).ToString(CultureInfo.InvariantCulture);
+        playTime.text=Math.Round(pd.time, 1).ToString(CultureInfo.InvariantCulture);
     }
 
     public void TimelineSpeed()
