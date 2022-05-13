@@ -13,12 +13,14 @@ public class TimeManager : MonoBehaviour
 
     private void Start()
     {
-        playLength.text = Math.Round(pd.playableAsset.duration, 1).ToString(CultureInfo.InvariantCulture);
+        var time = Math.Round(pd.playableAsset.duration, 1);
+        playLength.text = ReturnTime(time);
     }
 
     private void Update()
     {
-        playTime.text=Math.Round(pd.time, 1).ToString(CultureInfo.InvariantCulture);
+        var time = Math.Round(pd.time, 1);
+        playTime.text = ReturnTime(time);
     }
 
     public void TimelineSpeed()
@@ -27,5 +29,13 @@ public class TimeManager : MonoBehaviour
         pd.Pause();
         pd.playableGraph.GetRootPlayable(0).SetSpeed(timelineSpeed.value);
         pd.Play();
+    }
+    string ReturnTime(double time)
+    {
+        var minute = time / 60;
+        var second = time % 60;
+        var ts = TimeSpan.FromSeconds(time);
+
+        return ts.ToString(@"mm") + " : " + ts.ToString(@"ss");
     }
 }
