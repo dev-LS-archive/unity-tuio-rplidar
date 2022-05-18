@@ -477,7 +477,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC7AC\uC0DD \uC2DC\uAC04"
+  m_text: "\uB0A8\uC740 \uC2DC\uAC04"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0bd0b0f9f8eafc64a87486b06323a130, type: 2}
   m_sharedMaterial: {fileID: 701833887283217787, guid: 0bd0b0f9f8eafc64a87486b06323a130,
@@ -558,7 +558,7 @@ GameObject:
   - component: {fileID: 7197667792615409509}
   - component: {fileID: 7197667792615409507}
   - component: {fileID: 7197667792615409506}
-  - component: {fileID: 7197667792615409504}
+  - component: {fileID: 2169309494433816670}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -631,7 +631,7 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
---- !u!114 &7197667792615409504
+--- !u!114 &2169309494433816670
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -640,11 +640,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7197667792615409508}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebbbd4cc1e6b7eb48a0b7494b5f7941c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0eed69a74c4f41f4da7bf4cbeaaff578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timelineSpeed: {fileID: 0}
   pd: {fileID: 0}
-  currentText: {fileID: 0}
   playTime: {fileID: 7197667790677058633}
   playLength: {fileID: 7197667791969829199}
