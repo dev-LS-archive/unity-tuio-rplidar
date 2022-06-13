@@ -10,6 +10,9 @@ public class MediaSpawner : MonoBehaviour
 
     [SerializeField] private float coolTime = 0.5f;
     [SerializeField] private bool canTouch = true;
+    public Transform floorInfo;
+    [SerializeField] private float floorCool = 0f;
+    [SerializeField] private float floorTime = 5f;
 
     int num;
     
@@ -40,6 +43,7 @@ public class MediaSpawner : MonoBehaviour
             TouchManager.Instance.PointersPressed += PointersPressedHandler;
         }
         canTouch = true;
+        floorCool = 0f;
         StartCoroutine(nameof(CoolTouch));
     }
 
@@ -53,8 +57,24 @@ public class MediaSpawner : MonoBehaviour
         StopCoroutine(nameof(CoolTouch));
     }
 
+    private void Update()
+    {
+        if (floorInfo.gameObject.activeSelf != true)
+        {
+            floorCool += Time.deltaTime;
+            if (floorCool > floorTime)
+            {
+                floorCool = 0f;
+                floorInfo.gameObject.SetActive(true);
+            }
+        }
+    }
+
     private void SpawnPrefabAt(Vector2 position)
     {
+        floorCool = 0f;
+        floorInfo.gameObject.gameObject.SetActive(false);
+        
         var nTh = Random.Range(0, myParticles.Length);
         var obj = Instantiate(myParticles[nTh]);
         if (Camera.main != null)

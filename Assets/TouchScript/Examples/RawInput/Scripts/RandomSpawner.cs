@@ -47,6 +47,8 @@ namespace TouchScript.Examples.RawInput
 
         private void SpawnPrefabAt(Vector2 position)
         {
+            FloorInfo.Instance.HideInfo();
+            
             var obj = pooling.GetPooledObject(prefabs[spawnNum].name);//Instantiate(prefabs[spawnNum]);//Random.Range(0, prefabs.Length)
             if (spawnNum < prefabs.Length - 1 && prefabs.Length != 1)
                 spawnNum+=1;
