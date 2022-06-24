@@ -25,10 +25,10 @@ namespace TouchScript.Examples.RawInput
         public int spawnNum;
 
         private Vector2 _recentVector2;
-        private bool _firstSpawn;
 
         public double sizeVector2 = 72f;
-        
+        [SerializeField] private float xSum, ySum;
+
         private void Start()
         {
             spawnNum = 0;
@@ -73,29 +73,41 @@ namespace TouchScript.Examples.RawInput
 
         private void PointersPressedHandler(object sender, PointerEventArgs e)
         {
-            if (canSpawn != true)
-                return;
-
             float[] x = new float[e.Pointers.Count];
             float[] y = new float[e.Pointers.Count];
             int i = 0;
             //float xSum = 0, ySum = 0;
+            
             foreach (var pointer in e.Pointers)
             {
-                x[i] = pointer.Position.x;
-                y[i] = pointer.Position.y;
-                var center = new Vector2(x[i], y[i]);
-                StartCoroutine(Delay(center));
-                //xSum += x[i];
-                //ySum += y[i];
+                if (e.Pointers.Count < 10)
+                {
+                    x[i] = pointer.Position.x;
+                    y[i] = pointer.Position.y;
+                    var center = new Vector2(x[i], y[i]);
+                    if (!Mathf.Approximately(_recentVector2.x, center.x)
+                        && !Mathf.Approximately(_recentVector2.y, center.y))
+                    {
+                        print("center");
+                        if(canSpawn == true) 
+                            StartCoroutine(SpawnCheck());
+                        Filter(center);
+                    }
+                    print(i);
+
+                    i++;
+                    //xSum += x[i];
+                    //ySum += y[i];
+                }
             }
 
             //var center = new Vector2(xSum / e.Pointers.Count, ySum / e.Pointers.Count);
-            //StartCoroutine(Delay(center));
+            //print("center");
+            //Filter(center);
         }
 
         /*
-        IEnumerator Delay(Vector2 center)
+        IEnumerator Filter(Vector2 center)
         {
             // for (int i = 0; i < backChanger.sceneObjects.Length; i++)
             // {
@@ -114,7 +126,7 @@ namespace TouchScript.Examples.RawInput
         }
         */
 
-        IEnumerator Delay(Vector2 center)
+        private void Filter(Vector2 center)
         {
             // for (int i = 0; i < backChanger.sceneObjects.Length; i++)
             // {
@@ -124,33 +136,32 @@ namespace TouchScript.Examples.RawInput
             //         Instantiate(backEffects[backChanger.activeObject]);
             //     }
             // }
-
-            canSpawn = false;
-            if (_firstSpawn == true)
+            
+            //SpawnPrefabAt(center);
+            //_recentVector2 = center;
+            if (canSpawn != true)
+                return;
+            
+            
+            bool areaCheckX = _recentVector2.x - sizeVector2 < center.x && _recentVector2.x + sizeVector2 > center.x;
+            bool areaCheckY = _recentVector2.y - sizeVector2 < center.y && _recentVector2.y + sizeVector2 > center.y;
+            print("Mathf.Approximately1");
+            //print(areaCheckX + "/" + areaCheckY);
+            if (!areaCheckX || !areaCheckY)
             {
-                _firstSpawn = false;
                 SpawnPrefabAt(center);
+                _recentVector2 = center;
+                print("Mathf.Approximately2");
             }
-            //이전 스폰 위치와 비슷할 경우에 스폰X
-            else if (!Mathf.Approximately(_recentVector2.x, center.x)
-                     && !Mathf.Approximately(_recentVector2.y, center.y))
-            {
-                //SpawnPrefabAt(center);
-                //_recentVector2 = center;
-                bool areaCheckX = _recentVector2.x - sizeVector2 < center.x && _recentVector2.x + sizeVector2 > center.x;
-                bool areaCheckY = _recentVector2.y - sizeVector2 < center.y && _recentVector2.y + sizeVector2 > center.y;
-                //print("Mathf.Approximately1");
-                //print(areaCheckX + "/" + areaCheckY);
-                if (!areaCheckX || !areaCheckY)
-                {
-                    SpawnPrefabAt(center);
-                    _recentVector2 = center;
-                    //print("Mathf.Approximately2");
-                }
-            }
+                //yield return new WaitForSeconds(delay);
+            
+        }
+
+        private IEnumerator SpawnCheck()
+        {
+            canSpawn = false;
             yield return new WaitForSeconds(delay);
             canSpawn = true;
-            _firstSpawn = false;
         }
     }
 }
