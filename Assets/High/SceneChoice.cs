@@ -16,24 +16,24 @@ public class SceneChoice : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            SceneManager.LoadScene("1««æ∆≥Î");
+            SceneManager.LoadScene("1ÌîºÏïÑÎÖ∏");
                 
         }
 
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            SceneManager.LoadScene("4≤…");
+            SceneManager.LoadScene("4ÍΩÉ");
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            SceneManager.LoadScene("5∆¯πﬂ");
+            SceneManager.LoadScene("5Ìè≠Î∞ú");
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            SceneManager.LoadScene("2π∞∞·");
+            SceneManager.LoadScene("2Î¨ºÍ≤∞");
         }
     }
 }

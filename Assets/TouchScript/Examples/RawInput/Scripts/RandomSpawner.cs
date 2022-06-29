@@ -28,6 +28,7 @@ namespace TouchScript.Examples.RawInput
 
         public double sizeVector2 = 72f;
         [SerializeField] private float xSum, ySum;
+        [Range(0, 8)] public int filterLevel = 0;
 
         private void Start()
         {
@@ -75,37 +76,60 @@ namespace TouchScript.Examples.RawInput
         {
             float[] x = new float[e.Pointers.Count];
             float[] y = new float[e.Pointers.Count];
+
             int i = 0;
-            //float xSum = 0, ySum = 0;
-            
+            // //float xSum = 0, ySum = 0;
+            //
+            // foreach (var pointer in e.Pointers)
+            // {
+            //     if (e.Pointers.Count < 10)
+            //     {
+            //         x[i] = pointer.Position.x;
+            //         y[i] = pointer.Position.y;
+            //         var center = new Vector2(x[i], y[i]);
+            //         if (!Mathf.Approximately(_recentVector2.x, center.x)
+            //             && !Mathf.Approximately(_recentVector2.y, center.y))
+            //         {
+            //             print("center");
+            //             Filter(center);
+            //             //if(canSpawn == true)
+            //                 //SpawnCheck();
+            //         }
+            //         print(i);
+            //
+            //         i++;
+            //         //xSum += x[i];
+            //         //ySum += y[i];
+            //     }
+            // }
+
             foreach (var pointer in e.Pointers)
             {
                 if (e.Pointers.Count < 10)
                 {
-                    x[i] = pointer.Position.x;
-                    y[i] = pointer.Position.y;
-                    var center = new Vector2(x[i], y[i]);
-                    if (!Mathf.Approximately(_recentVector2.x, center.x)
-                        && !Mathf.Approximately(_recentVector2.y, center.y))
+                    if (filterLevel == i)
                     {
-                        print("center");
-                        if(canSpawn == true) 
-                            StartCoroutine(SpawnCheck());
-                        Filter(center);
+                        x[filterLevel] = pointer.Position.x;
+                        y[filterLevel] = pointer.Position.y;
+                        var center = new Vector2(x[filterLevel], y[filterLevel]);
+                        if (!Mathf.Approximately(_recentVector2.x, center.x)
+                            && !Mathf.Approximately(_recentVector2.y, center.y))
+                        {
+                            print("center");
+                            Filter(center);
+                            //if(canSpawn == true)
+                                //SpawnCheck();
+                        }
+                        //break;
                     }
-                    print(i);
-
+                    //print(i);
                     i++;
-                    //xSum += x[i];
-                    //ySum += y[i];
                 }
             }
-
             //var center = new Vector2(xSum / e.Pointers.Count, ySum / e.Pointers.Count);
             //print("center");
             //Filter(center);
         }
-
         /*
         IEnumerator Filter(Vector2 center)
         {
@@ -136,7 +160,7 @@ namespace TouchScript.Examples.RawInput
             //         Instantiate(backEffects[backChanger.activeObject]);
             //     }
             // }
-            
+            //print(center);
             //SpawnPrefabAt(center);
             //_recentVector2 = center;
             if (canSpawn != true)
@@ -157,10 +181,17 @@ namespace TouchScript.Examples.RawInput
             
         }
 
-        private IEnumerator SpawnCheck()
+        private void SpawnCheck()
         {
+            if (canSpawn != true)
+                return;
             canSpawn = false;
-            yield return new WaitForSeconds(delay);
+            Invoke(nameof(CanSpawnControl), delay);
+        }
+
+        private void CanSpawnControl()
+        {
+            //print("SC");
             canSpawn = true;
         }
     }
