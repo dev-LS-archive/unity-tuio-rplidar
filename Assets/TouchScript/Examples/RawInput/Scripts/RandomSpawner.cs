@@ -115,7 +115,9 @@ namespace TouchScript.Examples.RawInput
                         if (!Mathf.Approximately(_recentVector2.x, center.x)
                             && !Mathf.Approximately(_recentVector2.y, center.y))
                         {
+#if UNITY_EDITOR
                             print("center");
+#endif
                             Filter(center);
                             //if(canSpawn == true)
                                 //SpawnCheck();
@@ -126,9 +128,9 @@ namespace TouchScript.Examples.RawInput
                     i++;
                 }
             }
-            //var center = new Vector2(xSum / e.Pointers.Count, ySum / e.Pointers.Count);
+            //var center1 = new Vector2(x[0], y[0]);
             //print("center");
-            //Filter(center);
+            //Filter(center1);
         }
         /*
         IEnumerator Filter(Vector2 center)
@@ -169,13 +171,18 @@ namespace TouchScript.Examples.RawInput
             
             bool areaCheckX = _recentVector2.x - sizeVector2 < center.x && _recentVector2.x + sizeVector2 > center.x;
             bool areaCheckY = _recentVector2.y - sizeVector2 < center.y && _recentVector2.y + sizeVector2 > center.y;
+#if UNITY_EDITOR
             print("Mathf.Approximately1");
+#endif
             //print(areaCheckX + "/" + areaCheckY);
+            //print(center);
             if (!areaCheckX || !areaCheckY)
             {
                 SpawnPrefabAt(center);
                 _recentVector2 = center;
+#if UNITY_EDITOR
                 print("Mathf.Approximately2");
+#endif
             }
                 //yield return new WaitForSeconds(delay);
             
