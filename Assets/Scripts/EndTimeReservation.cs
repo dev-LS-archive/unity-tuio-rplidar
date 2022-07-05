@@ -94,7 +94,7 @@ public class EndTimeReservation : MonoBehaviour
 
     void SetTime()
     {
-        _hour = PlayerPrefs.GetInt("Hour", 5);
+        _hour = PlayerPrefs.GetInt("Hour", 4);
         quitHour.value = _hour;
 
         _minute = PlayerPrefs.GetInt("Minute", 35);

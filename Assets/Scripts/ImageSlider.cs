@@ -21,27 +21,49 @@ public class ImageSlider : MonoBehaviour
     public TMP_Text currentText;
 
     public ColorState colorState;
-    public ImageSlider[] sliders;
-
+    public float defaultValue = 1f;
     private void Start()
     {
         switch (colorState)
         {
             case ColorState.Red:
-                scaleSlider.value = PlayerPrefs.GetFloat("Red");
+                scaleSlider.value = PlayerPrefs.GetFloat("Red", defaultValue);
                 break;
             case ColorState.Green:
-                scaleSlider.value = PlayerPrefs.GetFloat("Green");
+                scaleSlider.value = PlayerPrefs.GetFloat("Green", defaultValue);
                 break;
             case ColorState.Blue:
-                scaleSlider.value = PlayerPrefs.GetFloat("Blue");
+                scaleSlider.value = PlayerPrefs.GetFloat("Blue", defaultValue);
                 break;
             case ColorState.Alpha:
-                scaleSlider.value = PlayerPrefs.GetFloat("Alpha");
+                scaleSlider.value = PlayerPrefs.GetFloat("Alpha", defaultValue);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
+    }
+
+    public void Reset()
+    {
+        switch (colorState)
+        {
+            case ColorState.Red:
+                PlayerPrefs.SetFloat("Red", defaultValue);
+                break;
+            case ColorState.Green:
+                PlayerPrefs.SetFloat("Green", defaultValue);
+                break;
+            case ColorState.Blue:
+                PlayerPrefs.SetFloat("Blue", defaultValue);
+                break;
+            case ColorState.Alpha:
+                PlayerPrefs.SetFloat("Alpha", defaultValue);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+
+        RuntimeChange(previewImage);
     }
 
     public void RuntimeChange()
@@ -64,6 +86,32 @@ public class ImageSlider : MonoBehaviour
                     break;
                 case ColorState.Alpha:
                     scaleSlider.value = image.color.a;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+    }
+    public void RuntimeChange(Image colorImage)
+    {
+        previewImage.color = new Color(PlayerPrefs.GetFloat("Red"), PlayerPrefs.GetFloat("Green"),
+            PlayerPrefs.GetFloat("Blue"), PlayerPrefs.GetFloat("Alpha"));
+        if (image.color != previewImage.color)
+        {
+            //print("Change");
+            switch (colorState)
+            {
+                case ColorState.Red:
+                    scaleSlider.value = colorImage.color.r;
+                    break;
+                case ColorState.Green:
+                    scaleSlider.value = colorImage.color.g;
+                    break;
+                case ColorState.Blue:
+                    scaleSlider.value = colorImage.color.b;
+                    break;
+                case ColorState.Alpha:
+                    scaleSlider.value = colorImage.color.a;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

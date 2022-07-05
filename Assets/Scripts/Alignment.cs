@@ -5,22 +5,40 @@ public class Alignment : MonoBehaviour
 {
     public Text text;
     
-    private void AligmentCon(TextAnchor anchor)
+    private void Start()
+    {
+        switch (PlayerPrefs.GetString("Alignment","Center"))
+        {
+            case "Left":
+                AlignmentLeft();
+                break;
+            case "Center":
+                AlignmentCenter();
+                break;
+            case "Right":
+                AlignmentRight();
+                break;
+        }
+    }
+    private void AlignmentCon(TextAnchor anchor)
     {
         text.alignment = anchor;
     }
 
-    public void AligmentLeft()
+    public void AlignmentLeft()
     {
-        AligmentCon(TextAnchor.LowerLeft);
+        PlayerPrefs.SetString("Alignment", "Left");
+        AlignmentCon(TextAnchor.LowerLeft);
     }
     
-    public void AligmentCenter()
+    public void AlignmentCenter()
     {
-        AligmentCon(TextAnchor.LowerCenter);
+        PlayerPrefs.SetString("Alignment", "Center");
+        AlignmentCon(TextAnchor.LowerCenter);
     }
-    public void AligmentRight()
+    public void AlignmentRight()
     {
-        AligmentCon(TextAnchor.LowerRight);
+        PlayerPrefs.SetString("Alignment", "Right");
+        AlignmentCon(TextAnchor.LowerRight);
     }
 }
