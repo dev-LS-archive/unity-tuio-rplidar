@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/CustomRpliadr Assets 1.unity
     guid: 1445336e225cf5b42b9d05f1ff33829d
+  - enabled: 0
+    path: Assets/ColorPickerPlugin/Examples/Example_PC_Mobile.unity
+    guid: fa9504f064625394d84d9e55549dbdfb
   m_configObjects: {}

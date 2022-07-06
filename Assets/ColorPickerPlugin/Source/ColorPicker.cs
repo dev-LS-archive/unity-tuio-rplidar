@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+//using Logger = Dev_LSG.Scripts.Core.Logger;
 
 /// <summary>
 /// Color picker for PC & Mobile.
@@ -68,8 +70,14 @@ public class ColorPicker : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         if (!cursorEnter)
             return;
-
+#if UNITY_EDITOR
         Vector2 mPos = Input.mousePosition;
+        //Logger.Instance.LogInfo(pickingPointer.rectTransform.position.ToString());
+#else
+        Vector2 mPos = Display.RelativeMouseAt(Input.mousePosition);
+        //Logger.Instance.LogInfo(pickingPointer.rectTransform.position.ToString());
+#endif
+
         pickingPointer.transform.position = mPos;
 
         mPos = targetPaletteImage.rectTransform.InverseTransformPoint(mPos);
@@ -147,5 +155,5 @@ public class ColorPicker : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public Color PUBLIC_GetColor()
     {
         return ColorPickerResult;
-    }  
+    }
 }

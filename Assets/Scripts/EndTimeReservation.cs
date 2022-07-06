@@ -15,6 +15,7 @@ public class EndTimeReservation : MonoBehaviour
     
     public RandomSpawner[] spawners;
     public TouchScriptInputModule touchModule;
+    //public GameObject touchManager;
 
     public TMP_Text h, m, s, t;
     public bool isWindowOpen = false;
@@ -41,6 +42,7 @@ public class EndTimeReservation : MonoBehaviour
                     variable.enabled = true;
                 }
                 touchModule.enabled = true;
+                //touchManager.SetActive(true);
                 Save_And_Close();
             }
             else
@@ -50,6 +52,7 @@ public class EndTimeReservation : MonoBehaviour
                     variable.enabled = false;
                 }
                 touchModule.enabled = false;
+                //touchManager.SetActive(false);
                 controlWindow.SetActive(true);
                 isWindowOpen = true;
             }
