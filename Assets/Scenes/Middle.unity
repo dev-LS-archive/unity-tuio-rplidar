@@ -589,6 +589,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cbeae7e45d5b8249b4054dcfe63ca0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  touchModule: {fileID: 1764701052}
+  roseManager: {fileID: 1323586066}
   controlWindow: {fileID: 141192319}
   bottom: {fileID: 195491265}
   left: {fileID: 859682737}
@@ -3225,7 +3227,7 @@ MonoBehaviour:
   isQuit: 0
   endTime: 0
   canSpawn: 1
-  filterLevel: 2
+  filterLevel: 3
   sizeVector2: 90
   spawnDistance1: 20
   spawnDistance2: 20

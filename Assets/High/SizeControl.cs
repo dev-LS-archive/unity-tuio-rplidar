@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TouchScript.Layers.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SizeControl : MonoBehaviour
 {
+    public TouchScriptInputModule touchModule;
+    public RoseManager roseManager;
 
     static SizeControl instance;
 
@@ -60,13 +63,20 @@ public class SizeControl : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            
             if (controlWindow.activeSelf)
             {
+                roseManager.enabled = true;
+                
+                touchModule.enabled = true;
+                //touchManager.SetActive(true);
                 Save_And_Close();
             }
             else
             {
+                roseManager.enabled = false;
+                
+                touchModule.enabled = false;
+                //touchManager.SetActive(false);
                 controlWindow.SetActive(true);
                 isWindowOpen = true;
             }

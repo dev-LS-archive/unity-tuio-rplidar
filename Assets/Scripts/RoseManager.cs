@@ -174,7 +174,7 @@ public class RoseManager : MonoBehaviour
                 case 1:
 
                     int ran33 = Random.Range(0, myMagicParticles.poolPrefabs.Length);
-                    var particle2 = myMagicParticles.GetPooledObject(myParticles.poolPrefabs[ran33]
+                    var particle2 = myMagicParticles.GetPooledObject(myMagicParticles.poolPrefabs[ran33]
                         .name); //GameObject  = Instantiate(myParticles.poolPrefabs[ran22]);
 
                     // particle2.transform.position = hit.point + particle2.transform.position + new Vector3(0, 0.5f, 0);
