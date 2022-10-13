@@ -35,9 +35,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pre_Load.unity
     guid: 3d23fe6b9088bba4da94d95db0464e0d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CustomRpliadr Assets.unity
     guid: 10037bc9ad36fbf44ac432f6b1966f62
+  - enabled: 1
+    path: Assets/Scenes/Middle.unity
+    guid: 74001b9c136b6d94ba7fd97f8e102042
   - enabled: 0
     path: Assets/Scenes/CustomRpliadr Assets 1.unity
     guid: 1445336e225cf5b42b9d05f1ff33829d

@@ -26,7 +26,7 @@ namespace TouchScript.Examples.RawInput
 
         private Vector2 _recentVector2;
 
-        public double sizeVector2 = 72f;
+        public double sizeVector2 = 90f;
         [SerializeField] private float xSum, ySum;
         [Range(0, 8)] public int filterLevel = 0;
 
