@@ -67,7 +67,7 @@ public class SizeControl : MonoBehaviour
             {
                 roseManager.enabled = true;
                 
-                touchModule.enabled = true;
+                //touchModule.enabled = true;
                 //touchManager.SetActive(true);
                 Save_And_Close();
             }
@@ -75,7 +75,7 @@ public class SizeControl : MonoBehaviour
             {
                 roseManager.enabled = false;
                 
-                touchModule.enabled = false;
+                //touchModule.enabled = false;
                 //touchManager.SetActive(false);
                 controlWindow.SetActive(true);
                 isWindowOpen = true;
