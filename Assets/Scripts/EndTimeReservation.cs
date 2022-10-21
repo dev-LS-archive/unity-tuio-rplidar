@@ -5,6 +5,7 @@ using TouchScript.InputSources;
 using TouchScript.Layers.UI;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class EndTimeReservation : MonoBehaviour
 {
     public GameObject controlWindow;

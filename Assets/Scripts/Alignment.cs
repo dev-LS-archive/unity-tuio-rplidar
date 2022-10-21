@@ -3,21 +3,62 @@ using UnityEngine.UI;
 
 public class Alignment : MonoBehaviour
 {
+    public Dropdown dropdown;
     public Text text;
     
     private void Start()
     {
-        switch (PlayerPrefs.GetString("Alignment","Center"))
+        var opText = PlayerPrefs.GetString("Alignment", "MiddleCenter");
+        for (int i = 0; i < dropdown.options.Count; i++)
         {
-            case "Left":
-                AlignmentLeft();
+            if (dropdown.options[i].text == opText)
+            {
+                dropdown.value = i;
+            }
+            else
+            {
+                AlignmentEvent();
+            }
+        }
+    }
+
+    public void AlignmentEvent()
+    {
+        print(dropdown.options[dropdown.value].text);
+        switch (dropdown.options[dropdown.value].text)
+        {
+            case "UpperLeft":
+                AlignmentUpperLeft();
                 break;
-            case "Center":
-                AlignmentCenter();
+            case "UpperCenter":
+                AlignmentUpperCenter();
                 break;
-            case "Right":
-                AlignmentRight();
+            case "UpperRight":
+                AlignmentUpperRight();
                 break;
+            
+            case "MiddleLeft":
+                AlignmentMiddleLeft();
+                break;
+            case "MiddleCenter":
+                AlignmentMiddleCenter();
+                break;
+            case "MiddleRight":
+                AlignmentMiddleRight();
+                break;
+            
+            case "LowerLeft":
+                AlignmentLowerLeft();
+                break;
+            case "LowerCenter":
+                AlignmentLowerCenter();
+                break;
+            case "LowerRight":
+                AlignmentLowerRight();
+                break;
+            default:
+                AlignmentMiddleCenter();
+                break;;
         }
     }
     private void AlignmentCon(TextAnchor anchor)
@@ -25,20 +66,57 @@ public class Alignment : MonoBehaviour
         text.alignment = anchor;
     }
 
-    public void AlignmentLeft()
+    private void AlignmentUpperLeft()
     {
-        PlayerPrefs.SetString("Alignment", "Left");
+        PlayerPrefs.SetString("Alignment", "UpperLeft");
+        AlignmentCon(TextAnchor.UpperLeft);
+    }
+
+    private void AlignmentUpperCenter()
+    {
+        PlayerPrefs.SetString("Alignment", "UpperCenter");
+        AlignmentCon(TextAnchor.UpperCenter);
+    }
+
+    private void AlignmentUpperRight()
+    {
+        PlayerPrefs.SetString("Alignment", "UpperRight");
+        AlignmentCon(TextAnchor.UpperRight);
+    }
+
+    private void AlignmentMiddleLeft()
+    {
+        PlayerPrefs.SetString("Alignment", "MiddleLeft");
+        AlignmentCon(TextAnchor.MiddleLeft);
+    }
+
+    private void AlignmentMiddleCenter()
+    {
+        PlayerPrefs.SetString("Alignment", "MiddleCenter");
+        AlignmentCon(TextAnchor.MiddleCenter);
+    }
+
+    private void AlignmentMiddleRight()
+    {
+        PlayerPrefs.SetString("Alignment", "MiddleRight");
+        AlignmentCon(TextAnchor.MiddleRight);
+    }
+
+    private void AlignmentLowerLeft()
+    {
+        PlayerPrefs.SetString("Alignment", "LowerLeft");
         AlignmentCon(TextAnchor.LowerLeft);
     }
-    
-    public void AlignmentCenter()
+
+    private void AlignmentLowerCenter()
     {
-        PlayerPrefs.SetString("Alignment", "Center");
+        PlayerPrefs.SetString("Alignment", "LowerCenter");
         AlignmentCon(TextAnchor.LowerCenter);
     }
-    public void AlignmentRight()
+
+    private void AlignmentLowerRight()
     {
-        PlayerPrefs.SetString("Alignment", "Right");
+        PlayerPrefs.SetString("Alignment", "LowerRight");
         AlignmentCon(TextAnchor.LowerRight);
     }
 }
