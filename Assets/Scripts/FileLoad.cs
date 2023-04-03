@@ -53,7 +53,7 @@ public class FileLoad : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         UnActProgram();
         ActProgram();
-        ActWindow(fileName,SW_SHOWMINIMIZED);
+        ActWindow(fileName,7);
         //SetForegroundWindow(GetActiveWindow());
         SceneManager.LoadScene(1);
     }

@@ -116,7 +116,7 @@ namespace TouchScript.Examples.RawInput
                             && !Mathf.Approximately(_recentVector2.y, center.y))
                         {
 #if UNITY_EDITOR
-                            print("center");
+                            //print("center");
 #endif
                             Filter(center);
                             //if(canSpawn == true)
@@ -172,7 +172,7 @@ namespace TouchScript.Examples.RawInput
             bool areaCheckX = _recentVector2.x - sizeVector2 < center.x && _recentVector2.x + sizeVector2 > center.x;
             bool areaCheckY = _recentVector2.y - sizeVector2 < center.y && _recentVector2.y + sizeVector2 > center.y;
 #if UNITY_EDITOR
-            print("Mathf.Approximately1");
+            //print("Mathf.Approximately1");
 #endif
             //print(areaCheckX + "/" + areaCheckY);
             //print(center);
@@ -181,7 +181,7 @@ namespace TouchScript.Examples.RawInput
                 SpawnPrefabAt(center);
                 _recentVector2 = center;
 #if UNITY_EDITOR
-                print("Mathf.Approximately2");
+                //print("Mathf.Approximately2");
 #endif
             }
                 //yield return new WaitForSeconds(delay);

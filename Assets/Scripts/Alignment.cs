@@ -24,7 +24,9 @@ public class Alignment : MonoBehaviour
 
     public void AlignmentEvent()
     {
-        print(dropdown.options[dropdown.value].text);
+#if UNITY_EDITOR
+        //print(dropdown.options[dropdown.value].text);
+#endif
         switch (dropdown.options[dropdown.value].text)
         {
             case "UpperLeft":
