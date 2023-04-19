@@ -38,21 +38,13 @@ public class EndTimeReservation : MonoBehaviour
             
             if (controlWindow.activeSelf)
             {
-                foreach (var variable in spawners)
-                {
-                    variable.enabled = true;
-                }
-                touchModule.enabled = true;
+                WindowControl(true);
                 //touchManager.SetActive(true);
                 Save_And_Close();
             }
             else
             {
-                foreach (var variable in spawners)
-                {
-                    variable.enabled = false;
-                }
-                touchModule.enabled = false;
+                WindowControl(false);
                 //touchManager.SetActive(false);
                 controlWindow.SetActive(true);
                 isWindowOpen = true;
@@ -75,6 +67,14 @@ public class EndTimeReservation : MonoBehaviour
         }
     }
 
+    public void WindowControl(bool en)
+    {
+        foreach (var variable in spawners)
+        {
+            variable.enabled = en;
+        }
+        touchModule.enabled = en;
+    }
     public void Quit()
     {
 #if UNITY_EDITOR
