@@ -11,6 +11,8 @@ public class FileLoad : MonoBehaviour
     [DllImport("user32.dll")]
     private static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
 
+    int hWnd = 0;
+    
     //private const int SW_HIDE = 0;
     //private const int SW_SHOWNORMAL = 1;
     private const int SW_SHOWMINIMIZED = 2;
@@ -23,6 +25,9 @@ public class FileLoad : MonoBehaviour
 
     [DllImport("user32.dll")]
     private static extern IntPtr GetActiveWindow();
+    
+    [DllImport("User32")]
+    private static extern int ShowWindow(int hwnd, int nCmdShow);
 
     public string actFile;
     public string fileName;
@@ -57,6 +62,23 @@ public class FileLoad : MonoBehaviour
         //SetForegroundWindow(GetActiveWindow());
         SceneManager.LoadScene(1);
     }
+
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.F2))
+    //     {
+    //         int hWnd;
+    //         foreach (Process process in Process.GetProcesses())
+    //         {
+    //             if (process.ProcessName.StartsWith(fileName))
+    //             {
+    //                 hWnd = process.MainWindowHandle.ToInt32();
+    //                 ShowWindow(hWnd, SW_SHOWMINIMIZED);
+    //             }
+    //         }
+    //         print("Min");
+    //     }
+    // }
 
     private void OnEnable()
     {

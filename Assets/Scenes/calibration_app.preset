@@ -27,7 +27,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: actFile
-    value: "calibration_app.exe - \uBC14\uB85C \uAC00\uAE30.lnk"
+    value: "calibration_app - \uBC14\uB85C \uAC00\uAE30.lnk"
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: fileName
