@@ -5653,12 +5653,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 1c4dd8a13f501b04f84fe824120f70bb, type: 3}
       propertyPath: layers.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 1c4dd8a13f501b04f84fe824120f70bb, type: 3}
       propertyPath: layers.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 123539298}
     - target: {fileID: 11400000, guid: 1c4dd8a13f501b04f84fe824120f70bb, type: 3}
       propertyPath: shouldCreateCameraLayer
       value: 1
@@ -12115,7 +12115,7 @@ VideoPlayer:
   m_GameObject: {fileID: 1393475451}
   m_Enabled: 1
   m_VideoClip: {fileID: 32900000, guid: 95c9cfe7946955049b14afed01c0fe3e, type: 3}
-  m_TargetCameraAlpha: 1
+  m_TargetCameraAlpha: 0
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
   m_TargetTexture: {fileID: 8400000, guid: c77a8984a022cab4c817f34607ab6353, type: 2}
@@ -14284,12 +14284,12 @@ GameObject:
   - component: {fileID: 1530813989}
   - component: {fileID: 1530813991}
   m_Layer: 0
-  m_Name: Timeline
+  m_Name: Timeline TUIO_Refresh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!320 &1530813989
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -14299,54 +14299,95 @@ PlayableDirector:
   m_GameObject: {fileID: 1530813988}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 35370ccec4a9e6b4e84bea3853463a0e, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 42502123b1c44b34d82cb2e399bf7ca9, type: 2}
   m_InitialState: 1
   m_WrapMode: 1
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: -8608743861765791740, guid: 35370ccec4a9e6b4e84bea3853463a0e, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 4192623493503668040}
-  - key: {fileID: -8746414205240703596, guid: 35370ccec4a9e6b4e84bea3853463a0e, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 4192623493139308184}
-  - key: {fileID: -435136890655448906, guid: 35370ccec4a9e6b4e84bea3853463a0e, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 4192623494017207828}
-  - key: {fileID: 2026063148140006309, guid: 35370ccec4a9e6b4e84bea3853463a0e, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 4192623494171007704}
-  - key: {fileID: -3570984603984700767, guid: 35370ccec4a9e6b4e84bea3853463a0e, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 4192623494171007702}
-  - key: {fileID: 3255456663445200019, guid: 35370ccec4a9e6b4e84bea3853463a0e, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 4192623493503668036}
-  - key: {fileID: -7875537093939997865, guid: 35370ccec4a9e6b4e84bea3853463a0e, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 4192623493139308180}
-  - key: {fileID: -2515529109740983834, guid: 35370ccec4a9e6b4e84bea3853463a0e, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 4192623494017207825}
-  - key: {fileID: -6305764047665922537, guid: 35370ccec4a9e6b4e84bea3853463a0e, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 0}
-  - key: {fileID: 4836724449960267094, guid: 35370ccec4a9e6b4e84bea3853463a0e, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 0}
-  - key: {fileID: -5841000342231329207, guid: 35370ccec4a9e6b4e84bea3853463a0e, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 0}
-  - key: {fileID: -3248884602142523183, guid: 35370ccec4a9e6b4e84bea3853463a0e, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 0}
-  - key: {fileID: 9128848251297656901, guid: 35370ccec4a9e6b4e84bea3853463a0e, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 0}
-  - key: {fileID: -8341388394180485615, guid: 35370ccec4a9e6b4e84bea3853463a0e, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 1315433876}
-  - key: {fileID: -2010846277590668336, guid: 35370ccec4a9e6b4e84bea3853463a0e, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 0}
-  - key: {fileID: -2653231102962502710, guid: 35370ccec4a9e6b4e84bea3853463a0e, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 0}
-  - key: {fileID: -1265907170368636310, guid: 35370ccec4a9e6b4e84bea3853463a0e, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 0}
-  - key: {fileID: 5963540872977162658, guid: 35370ccec4a9e6b4e84bea3853463a0e, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 0}
-  - key: {fileID: 7608400165632764392, guid: 35370ccec4a9e6b4e84bea3853463a0e, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 1705228661}
-  - key: {fileID: -3136375865538739146, guid: 35370ccec4a9e6b4e84bea3853463a0e, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 1705228666}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
+  - key: {fileID: 0}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
+    - 9d59a4113c4b352459de1306767bcff1: {fileID: 1393475453}
     - 914f54c4d831f7844a96d57a30ab4fd8: {fileID: 62216951}
     - 6fb32abeb867c1d4da0a728568d8d8f9: {fileID: 1393475453}
     - a038ca01b2b25b944a5de157c0343141: {fileID: 1393475453}
@@ -14384,24 +14425,24 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1393475453}
-          m_TargetAssemblyTypeName: UnityEngine.Video.VideoPlayer, UnityEngine
-          m_MethodName: Play
-          m_Mode: 1
+        - m_Target: {fileID: 2089872546}
+          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+          m_MethodName: set_enabled
+          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
-            m_BoolArgument: 0
+            m_BoolArgument: 1
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1393475453}
-          m_TargetAssemblyTypeName: UnityEngine.Video.VideoPlayer, UnityEngine
-          m_MethodName: Stop
-          m_Mode: 1
+        - m_Target: {fileID: 2089872546}
+          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+          m_MethodName: set_enabled
+          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -21601,6 +21642,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2082614847}
   m_CullTransparentMesh: 1
+--- !u!114 &2089872546 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1876201671, guid: 1c4dd8a13f501b04f84fe824120f70bb,
+    type: 3}
+  m_PrefabInstance: {fileID: 543251036}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c4b35b5ee8a443439ce04199575743f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2095414956
 GameObject:
   m_ObjectHideFlags: 0
