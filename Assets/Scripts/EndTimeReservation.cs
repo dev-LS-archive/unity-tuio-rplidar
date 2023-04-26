@@ -73,7 +73,7 @@ public class EndTimeReservation : MonoBehaviour
         {
             variable.enabled = en;
         }
-        touchModule.enabled = en;
+        //touchModule.enabled = en;
     }
     public void Quit()
     {
